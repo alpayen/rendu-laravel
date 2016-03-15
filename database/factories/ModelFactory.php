@@ -28,3 +28,12 @@ $factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
         'content' => $faker->text,
     ];
 });
+
+$factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
+    return [
+        'user_id' => mt_rand(1, 10),
+        'post_id' => mt_rand(1,20),
+        'content' => $faker->text,
+    ];
+});
+
