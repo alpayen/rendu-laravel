@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -47,7 +48,8 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+        //Affichage des commentaires en bas de pages de chaque post
+
     }
 
     /**
