@@ -15,4 +15,4 @@ class CommentsTableSeeder extends Seeder
         factory(App\Models\Comment::class, 40)->create();
     }
 }
-git commit -a -m "Creation de Seeder pour les comments, mise en place du systeme de com"
+
