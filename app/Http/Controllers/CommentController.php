@@ -42,7 +42,13 @@ class CommentController extends Controller
     {
         //Envoie de Comm en bdd
 
-
+        $this->validate($request, [
+            'content' => 'required|min:50'
+        ],
+        [
+            'content.required' => 'le champ de commentaire est vide!',
+            'content.min' => 'le commentaire doit faire au moins 50 caractères!'
+        ]);
 
         $comment = new Comment;
 
