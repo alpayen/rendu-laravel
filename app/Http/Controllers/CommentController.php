@@ -6,6 +6,7 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -16,7 +17,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -27,6 +28,8 @@ class CommentController extends Controller
     public function create()
     {
         //
+        return redirect()->route('articles.index');
+
     }
 
     /**
@@ -37,7 +40,21 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Envoie de Comm en bdd
+
+
+
+        $comment = new Comment;
+
+        $comment->user_id  = Auth::user()->id;
+        $comment->post_id  = $request->post_id;
+        $comment->content  = $request->content;
+
+        $comment->save();
+
+        return redirect()
+            ->route('articles.show', $comment->post_id)
+            ->with(compact('comment'));
     }
 
     /**
