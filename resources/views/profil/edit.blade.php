@@ -23,6 +23,15 @@
         {!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
     </div>
 
+    {!! Form::label('mdp', 'New Password') !!}
+        {!! Form::password('mdp',  ['class' => 'form-control']) !!}
+
+    {!! Form::label('mdpconf', 'Confirm Password') !!}
+        {!! Form::password('mdpconf',  ['class' => 'form-control']) !!}
+
+
+
+
 
     {!! Form::submit('Envoyer', ['class' => 'btn btn-block']) !!}
     {!! Form::close() !!}
