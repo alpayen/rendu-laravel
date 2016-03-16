@@ -5,6 +5,8 @@
     <p>{{$post->content}}</p>
 
     <hr>
+    @if(Auth::check())
+
     <h2>Publier un commentaire</h2>
     {!! Form::open(array(
     'action' => 'CommentController@store',
@@ -22,7 +24,13 @@
     {!! Form::close() !!}
 
     @include('partials.articles.errors')
+
+    @else
+        <strong>You must be <a href="{{route('login')}}">logged in</a> to post a comment</strong>
+
+    @endif
     <hr>
+
 
 
 

@@ -52,7 +52,7 @@ Route::group(['middleware' => ['web']], function () {
      */
 
 
-
+    Route::resource('/profile', 'ProfilController');
     Route::resource('/articles', 'PostController');
     Route::resource('/comment', 'CommentController');
 
@@ -67,6 +67,7 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     Route::get('/home', 'HomeController@index');
+
 
 
 
