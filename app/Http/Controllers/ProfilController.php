@@ -67,6 +67,10 @@ class ProfilController extends Controller
     public function edit($id)
     {
         //
+        $user =  User::find($id);
+
+        return view('profil.edit')->with(compact('user'));
+
     }
 
     /**
@@ -78,7 +82,15 @@ class ProfilController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->name   = $request->name;
+        $user->tel = $request->tel;
+        $user->email = $request->email;
+
+        $user->update();
+
+
+        return redirect(url('/profile'));
     }
 
     /**
