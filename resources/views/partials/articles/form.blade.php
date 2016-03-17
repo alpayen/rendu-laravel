@@ -1,5 +1,9 @@
 @if($action == 'edit')
+    @if(Auth::check() && Auth::user()->admin == 1)
+    {!! Form::model($post, ['route' => ['admin.articles.update', $post->id], 'method' => 'PUT']) !!}
+    @elseif(Auth::check() && Auth::user()->admin == 0)
     {!! Form::model($post, ['route' => ['articles.update', $post->id], 'method' => 'PUT']) !!}
+    @endif
 @else
     {!! Form::open(['route' => 'articles.store', 'method' => 'POST']) !!}
 @endif

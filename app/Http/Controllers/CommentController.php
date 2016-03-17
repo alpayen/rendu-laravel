@@ -58,9 +58,18 @@ class CommentController extends Controller
 
         $comment->save();
 
+        if(Auth::check() && Auth::user()->admin == 1){
+            return redirect()
+                ->route('admin.articles.show', $comment->post_id)
+                ->with(compact('comment'));
+        }
+
         return redirect()
             ->route('articles.show', $comment->post_id)
             ->with(compact('comment'));
+
+
+
     }
 
     /**
@@ -71,7 +80,6 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //Affichage des commentaires en bas de pages de chaque post
 
     }
 
@@ -107,5 +115,15 @@ class CommentController extends Controller
     public function destroy($id)
     {
         //
+        $postid = Comment::find($id)->post_id;
+        $comment = Comment::find($id);
+
+        $comment->delete();
+
+        if(Auth::check() && Auth::user()->admin == 1){
+        }
+        return redirect()->route('admin.articles.show', $postid);
+
+
     }
 }

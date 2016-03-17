@@ -15,6 +15,8 @@ class AddColumnPosts extends Migration
         Schema::table('posts', function (Blueprint $table) {
             $table->integer('user_id')->unsigned()->after('id');
             $table->foreign('user_id')->references('id')->on('users');
+
+
         });
     }
 
