@@ -58,9 +58,18 @@ class CommentController extends Controller
 
         $comment->save();
 
+        if(Auth::check() && Auth::user()->admin == 1){
+            return redirect()
+                ->route('admin.articles.show', $comment->post_id)
+                ->with(compact('comment'));
+        }
+
         return redirect()
             ->route('articles.show', $comment->post_id)
             ->with(compact('comment'));
+
+
+
     }
 
     /**
