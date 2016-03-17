@@ -38,3 +38,26 @@ $factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
     ];
 });
 
+
+$factory->define(App\Models\Projet::class, function (Faker\Generator $faker) {
+    return [
+        'user_id' => mt_rand(1, 10),
+        'nom' => $faker->name,
+        'email' => $faker->email,
+        'tel' => $faker->phoneNumber,
+        'nomduprojet' =>$faker->sentence,
+        'fonction' => 'PDG',
+        'adresse' =>$faker->address,
+        'nom_suivi' =>$faker->name,
+        'fonction_suivi' => 'secretaire',
+        'adresse_suivi' =>$faker->address,
+        'email_suivi' =>$faker->email,
+        'tel_suivi' =>$faker->phoneNumber,
+        'contexte' =>$faker->text($maxNbChars = 200),
+        'demande' =>$faker->text($maxNbChars = 200),
+        'objectif' =>$faker->text($maxNbChars = 200),
+        'contrainte' =>$faker->text($maxNbChars = 200),
+        'validation' =>$faker->text($maxNbChars = 200)
+
+    ];
+});

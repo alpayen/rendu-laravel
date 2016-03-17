@@ -51,6 +51,9 @@ Route::group(['middleware' => ['web']], function () {
     });
      */
 
+
+    Route::resource('/bap', 'BapController');
+
     Route::resource('/resetpassword', 'PasswordController');
 
     Route::group(['prefix' => 'admin'], function () {
