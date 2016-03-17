@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Projet;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -40,7 +41,7 @@ class BapController extends Controller
     {
         //
         $projet = new Projet;
-        $projet->user_id = Auth::find()->id;
+        $projet->user_id = Auth::user()->id;
         $projet->nom  = $request->nom;
         $projet->email  = $request->email;
         $projet->tel  = $request->tel;
@@ -58,6 +59,9 @@ class BapController extends Controller
         $projet->contrainte  = $request->contrainte;
         $projet->validation  = 0;
         $projet->save();
+
+
+        return view('home')->with('message', 'Votre Project nous a été envoyé, nous reviendrons à vous dans quelques instants pour vous faire par de sa validation');
     }
 
     /**
