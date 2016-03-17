@@ -93,7 +93,7 @@ class ProfilController extends Controller
                 'tel.digits_between:6,15' => 'Le numéro de tel doit faire entre 6 et 15 chiffre!',
                 'email.required' => 'L\'email est obligatoire!',
                 'email.email' => 'l\'email donné n\'est pas valide'
-    
+
             ]);
 
 
