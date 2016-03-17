@@ -51,6 +51,7 @@ Route::group(['middleware' => ['web']], function () {
     });
      */
 
+    Route::resource('/resetpassword', 'PasswordController');
 
     Route::resource('/profile', 'ProfilController');
     Route::resource('/articles', 'PostController');

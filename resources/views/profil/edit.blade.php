@@ -23,16 +23,22 @@
         {!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
     </div>
 
+
+    {!! Form::submit('Envoyer', ['class' => 'btn btn-block']) !!}
+    {!! Form::close() !!}
+
+    @include('partials.articles.errors')
+    <h2>Modifer mon mdp:</h2>
+
+    {!! Form::model($user, ['route' => ['resetpassword.update',$user->id],
+                            'method' => 'PUT']) !!}
+
     {!! Form::label('password', 'New Password') !!}
     {!! Form::password('password',  ['class' => 'form-control']) !!}
 
     {!! Form::label('password_confirmation', 'Confirm Password') !!}
     {!! Form::password('password_confirmation',  ['class' => 'form-control']) !!}
 
-
-
-
-    @include('partials.articles.errors')
     {!! Form::submit('Envoyer', ['class' => 'btn btn-block']) !!}
     {!! Form::close() !!}
 @endsection
