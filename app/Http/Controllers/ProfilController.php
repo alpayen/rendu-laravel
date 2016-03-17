@@ -82,10 +82,27 @@ class ProfilController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'mdp' => 'confirmed|min:6'
+        ],
+            [
+                'mdp.confirmed' => 'La confirmation du mot de pass ne corespond pas au mot de passe saisi',
+                'content.min' => 'Le mot de passe doit faire au moins 6 caractères!'
+            ]);
+
+
+
+
         $user = User::find($id);
         $user->name   = $request->name;
         $user->tel = $request->tel;
         $user->email = $request->email;
+
+
+        if(isset($request->password) && !is_null($request->password)){
+        $user->password = bcrypt($request->mdp);
+        }
+
 
         $user->update();
 
