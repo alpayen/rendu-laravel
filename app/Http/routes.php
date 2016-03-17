@@ -52,7 +52,13 @@ Route::group(['middleware' => ['web']], function () {
      */
 
     Route::resource('/resetpassword', 'PasswordController');
-    Route::resource('/admin', 'AdminController');
+
+    Route::group(['prefix' => 'admin'], function () {
+        Route::resource('/', 'AdminController');
+        Route::resource('/articles', 'AdminArticleController');
+    });
+
+
     Route::resource('/profile', 'ProfilController');
     Route::resource('/articles', 'PostController');
     Route::resource('/comment', 'CommentController');

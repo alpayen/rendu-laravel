@@ -2,32 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidatePostRequest;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use PhpParser\Comment;
 
-
-
-class AdminController extends Controller
+class AdminArticleController extends Controller
 {
-    public function __construct()
-    {
-
-        $this->middleware('admin');
-
-    }
-
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('admin.index');
+        //
+        $posts = Post::all();
+
+        return view('admin.articles.index')->with(compact('posts'));
+
     }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -58,7 +55,12 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+        try{
+            $post = Post::findOrFail($id);
+            return view('admin.articles.show')->with(compact('post'));
+        }catch(\Exception $e) {
+            return redirect()->route('admin.articles.index')->with(['erreur' => 'Oooooooppppsssssss !!']);
+        }
     }
 
     /**
@@ -69,7 +71,10 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post   = Post::find($id);
+        $users  = User::all()->lists('name', 'id')  ;
+
+        return view('admin.articles.edit')->with(compact('post', 'users'));
     }
 
     /**
@@ -79,9 +84,17 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidatePostRequest $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->title   = $request->title;
+        $post->content = $request->content;
+
+        $post->update();
+
+        return redirect()->route('admin.articles.show', $post->id);
+
     }
 
     /**
@@ -92,6 +105,12 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+
+        return redirect()->route('admin.articles.index');
     }
+
+
 }
