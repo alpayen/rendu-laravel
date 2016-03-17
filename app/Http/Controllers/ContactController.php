@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Contact;
 
 use App\Http\Requests;
+
+
+
 
 class ContactController extends Controller
 {
@@ -40,7 +44,25 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Enregistrement des données
+
+        $contact = new Contact;
+
+        $contact->user_id  = Auth::user()->id;
+        $contact->name    = $request->name;
+        $contact->email    = $request->email;
+        $contact->subject    = $request->subject;
+        $contact->content  = $request->content;
+
+        $contact->save();
+
+        $this->validate($request, [
+            'content' => 'required|min:20'
+        ],
+            [
+                'content.required' => 'le champ de commentaire est vide!',
+                'content.min' => 'Votre message doit faire au moins 20 caractères!'
+            ]);
     }
 
     /**

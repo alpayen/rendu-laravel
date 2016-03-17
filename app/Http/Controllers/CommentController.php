@@ -40,7 +40,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //Envoie de Comm en bdd
+        //Envoi de Comm en bdd
 
         $this->validate($request, [
             'content' => 'required|min:50'
