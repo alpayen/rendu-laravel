@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Models\Contact;
 
 use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
 
-class CommentController extends Controller
+
+
+
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +19,11 @@ class CommentController extends Controller
      */
     public function index()
     {
-        return redirect()->route('articles.index');
+        $title = "<h1 class='text-center'>Contact</h1>";
+
+
+        return view('contact/contact', ['title' => $title]);
+
     }
 
     /**
@@ -28,8 +34,6 @@ class CommentController extends Controller
     public function create()
     {
         //
-        return redirect()->route('articles.index');
-
     }
 
     /**
@@ -40,36 +44,25 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //Envoi de Comm en bdd
+        //Enregistrement des données
+
+        $contact = new Contact;
+
+        $contact->user_id  = Auth::user()->id;
+        $contact->name    = $request->name;
+        $contact->email    = $request->email;
+        $contact->subject    = $request->subject;
+        $contact->content  = $request->content;
+
+        $contact->save();
 
         $this->validate($request, [
-            'content' => 'required|min:50'
+            'content' => 'required|min:20'
         ],
-        [
-            'content.required' => 'le champ de commentaire est vide!',
-            'content.min' => 'le commentaire doit faire au moins 50 caractères!'
-        ]);
-
-        $comment = new Comment;
-
-        $comment->user_id  = Auth::user()->id;
-        $comment->post_id  = $request->post_id;
-        $comment->content  = $request->content;
-
-        $comment->save();
-
-        if(Auth::check() && Auth::user()->admin == 1){
-            return redirect()
-                ->route('admin.articles.show', $comment->post_id)
-                ->with(compact('comment'));
-        }
-
-        return redirect()
-            ->route('articles.show', $comment->post_id)
-            ->with(compact('comment'));
-
-
-
+            [
+                'content.required' => 'le champ de commentaire est vide!',
+                'content.min' => 'Votre message doit faire au moins 20 caractères!'
+            ]);
     }
 
     /**
@@ -80,7 +73,7 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -115,15 +108,6 @@ class CommentController extends Controller
     public function destroy($id)
     {
         //
-        $postid = Comment::find($id)->post_id;
-        $comment = Comment::find($id);
-
-        $comment->delete();
-
-        if(Auth::check() && Auth::user()->admin == 1){
-        }
-        return redirect()->route('admin.articles.show', $postid);
-
-
     }
+
 }
