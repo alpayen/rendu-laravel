@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Projet;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
 
-class BapController extends Controller
+class BapAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,15 +17,10 @@ class BapController extends Controller
     public function index()
     {
 
-        if(Auth::check()){
-
-        return view('bap.index');
-        }
-
-        else{
-            return view('auth.login');
-        }
-
+        $avalider = Projet::all()->where('validation', 0);
+        $valide = Projet::all()->where('validation', 1);
+        $rejete = Projet::all()->where('validation', 2);
+        return view('admin.bap.index')->with(compact('avalider', 'valide', 'rejete'));
     }
 
     /**
@@ -49,28 +42,6 @@ class BapController extends Controller
     public function store(Request $request)
     {
         //
-        $projet = new Projet;
-        $projet->user_id = Auth::user()->id;
-        $projet->nom  = $request->nom;
-        $projet->email  = $request->email;
-        $projet->tel  = $request->tel;
-        $projet->nomduprojet  = $request->nomduprojet;
-        $projet->fonction  = $request->fonction;
-        $projet->adresse  = $request->adresse;
-        $projet->nom_suivi  = $request->nom_suivi;
-        $projet->fonction_suivi  = $request->fonction_suivi;
-        $projet->adresse_suivi  = $request->adresse_suivi;
-        $projet->email_suivi  = $request->email_suivi;
-        $projet->tel_suivi  = $request->tel_suivi;
-        $projet->contexte  = $request->contexte;
-        $projet->demande  = $request->demande;
-        $projet->objectif  = $request->objectif;
-        $projet->contrainte  = $request->contrainte;
-        $projet->validation  = 0;
-        $projet->save();
-
-
-        return view('home')->with('message', 'Votre Project nous a été envoyé, nous reviendrons à vous dans quelques instants pour vous faire par de sa validation');
     }
 
     /**
