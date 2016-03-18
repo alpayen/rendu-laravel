@@ -19,7 +19,7 @@ class AboutController extends Controller
     public function index()
     {
         // va dans Views/about/contact
-
+        return view('about.contact');
 
     }
 
@@ -31,7 +31,7 @@ class AboutController extends Controller
     public function create()
     {
         //
-        return view('about.contact');
+
     }
 
     /**
