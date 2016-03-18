@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Contact;
+use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Http\Requests\ContactFormRequest;
 
-
-
-class ContactController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +18,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $title = "<h1 class='text-center'>Contact</h1>";
+        // va dans Views/about/contact
 
-
-        return view('contact/contact', ['title' => $title]);
-
+        return view('about.contact');
     }
 
     /**
@@ -42,27 +39,19 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactFormRequest $request)
     {
-        //Enregistrement des données
 
         $contact = new Contact;
 
-        $contact->user_id  = Auth::user()->id;
-        $contact->name    = $request->name;
+        $contact->name  = $request->name;
         $contact->email    = $request->email;
-        $contact->subject    = $request->subject;
-        $contact->content  = $request->content;
+        $contact->message  = $request->message;
 
         $contact->save();
 
-        $this->validate($request, [
-            'content' => 'required|min:20'
-        ],
-            [
-                'content.required' => 'le champ de commentaire est vide!',
-                'content.min' => 'Votre message doit faire au moins 20 caractères!'
-            ]);
+        return redirect() -> route('contact.index');
+
     }
 
     /**
@@ -109,5 +98,4 @@ class ContactController extends Controller
     {
         //
     }
-
 }
