@@ -10,19 +10,28 @@
         <p>Par: {{$projet->nom}}</p>
         {!! Form::model($projet, ['route' => ['admin.bap.update',$projet->id],
                            'method' => 'PUT']) !!}
-        <div class="form-group">
-            {!! Form::hidden('validation', 1, ['class' => 'form-control']) !!}
-        </div>
-        {!! Form::submit('Accepter ce projet', ['class' => 'btn btn-block']) !!}
-        {!! Form::close() !!}
+        <div class="row">
 
-        {!! Form::model($projet, ['route' => ['admin.bap.update',$projet->id],
-                           'method' => 'PUT']) !!}
-        <div class="form-group">
-            {!! Form::hidden('validation', 2, ['class' => 'form-control']) !!}
+            <div class="col-md-2 col-md-offset-4">
+
+                <div class="form-group">
+                    {!! Form::hidden('validation', 1, ['class' => 'form-control']) !!}
+                </div>
+                {!! Form::submit('Accepter ce projet', ['class' => 'btn btn-success']) !!}
+                {!! Form::close() !!}
+            </div>
+            <div class="col-md-6">
+                {!! Form::model($projet, ['route' => ['admin.bap.update',$projet->id],
+                                   'method' => 'PUT']) !!}
+                <div class="form-group">
+                    {!! Form::hidden('validation', 2, ['class' => 'form-control']) !!}
+                </div>
+                {!! Form::submit('Rejeter ce projet', ['class' => 'btn btn-danger']) !!}
+
+
+                {!! Form::close() !!}
+            </div>
         </div>
-        {!! Form::submit('Rejeter ce projet', ['class' => 'btn btn-block']) !!}
-        {!! Form::close() !!}
         <br>
         <br>
     @endforeach

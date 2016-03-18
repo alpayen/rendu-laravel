@@ -32,7 +32,7 @@
     </div>
 
 
-    {!! Form::label('email', 'Email') !!}
+    {!! Form::label('email', 'Adresse mail') !!}
     <div class="form-group">
         {!! Form::text('email',Auth::user()->email, ['class' => 'form-control']) !!}
     </div>
@@ -57,27 +57,27 @@
         {!! Form::text('adresse',Null, ['class' => 'form-control']) !!}
     </div>
 
-    {!! Form::label('nom_suivi', 'Nom et Prenom') !!}
+    {!! Form::label('nom_suivi', 'Nom et Prenom de suivi') !!}
     <div class="form-group">
         {!! Form::text('nom_suivi',Null, ['class' => 'form-control']) !!}
     </div>
 
-    {!! Form::label('fonction_suivi', 'Fonction au sein de l\'entreprise') !!}
+    {!! Form::label('fonction_suivi', 'Fonction de suivi au sein de l\'entreprise') !!}
     <div class="form-group">
         {!! Form::text('fonction_suivi',Null, ['class' => 'form-control']) !!}
     </div>
 
-    {!! Form::label('adresse_suivi', 'Adresse') !!}
+    {!! Form::label('adresse_suivi', 'Adresse de suivi') !!}
     <div class="form-group">
         {!! Form::text('adresse_suivi',Null, ['class' => 'form-control']) !!}
     </div>
 
-    {!! Form::label('email_suivi', 'Email') !!}
+    {!! Form::label('email_suivi', 'Adresse mail de suivi') !!}
     <div class="form-group">
         {!! Form::text('email_suivi',Null, ['class' => 'form-control']) !!}
     </div>
 
-    {!! Form::label('tel_suivi', 'Numéro de téléphone') !!}
+    {!! Form::label('tel_suivi', 'Numéro de téléphone de suivi') !!}
     <div class="form-group">
         {!! Form::text('tel_suivi',Null, ['class' => 'form-control']) !!}
     </div>
@@ -103,7 +103,7 @@
     </div>
 
 
-    {!! Form::submit('Envoyer', ['class' => 'btn btn-block']) !!}
+    {!! Form::submit('Envoyer le projet', ['class' => 'btn btn-block']) !!}
     {!! Form::close() !!}
 
 
