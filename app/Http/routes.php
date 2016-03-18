@@ -66,6 +66,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('/profile', 'ProfilController');
     Route::resource('/articles', 'PostController');
     Route::resource('/comment', 'CommentController');
+    Route::resource('/setadmin', 'Auth\AuthController');
 
     Route::resource('/contact', 'AboutController');
 

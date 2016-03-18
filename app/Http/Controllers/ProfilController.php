@@ -103,11 +103,10 @@ class ProfilController extends Controller
         $user->name   = $request->name;
         $user->tel = $request->tel;
         $user->email = $request->email;
-
-        //Le pb vient certainement de cette ligne, meme si le $request->password est vide il me change le mdp en bdd. Et le mdp
-        //n'est pas exploitable de toute facon!
-        if(isset($request->password) && !is_null($request->password)){
-        $user->password = bcrypt($request->mdp);
+        if($request->admin == TRUE){
+        $user->admin = 1;}
+        else{
+            $user->admin = 0;
         }
 
 
