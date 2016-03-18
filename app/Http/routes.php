@@ -66,10 +66,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('/articles', 'PostController');
     Route::resource('/comment', 'CommentController');
 
-    Route::get('contact',
-        ['as' => 'contact', 'uses' => 'AboutController@create']);
-    Route::post('contact',
-        ['as' => 'contact_store', 'uses' => 'AboutController@store']);
+    Route::resource('/contact', 'AboutController');
+
 
     Route::auth();
 

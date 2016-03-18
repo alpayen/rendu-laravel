@@ -16,7 +16,7 @@
 
     <div class="row">
 
-        <h1>Contact TODOParrot</h1>
+        <h1>Contact</h1>
 
         <ul>
             @foreach($errors->all() as $error)
@@ -24,7 +24,7 @@
             @endforeach
         </ul>
 
-        {!! Form::open(array('route' => 'contact_store', 'class' => 'form')) !!}
+        {!! Form::open(array('route' => 'contact.store', 'method' => 'POST', 'class' => 'form')) !!}
 
         <div class="form-group">
             {!! Form::label('Your Name') !!}
