@@ -7,10 +7,13 @@ use App\Models\Contact;
 
 use App\Http\Requests;
 
+use Illuminate\Support\Facades\Auth;
 
 
 
-class ContactController extends Controller
+
+
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +22,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $title = "<h1 class='text-center'>Contact</h1>";
 
-
-        return view('contact/contact', ['title' => $title]);
+        return view('about.contact');
 
     }
 
