@@ -18,7 +18,15 @@ class BapController extends Controller
      */
     public function index()
     {
+        if(Auth::check()){
+
         return view('bap.index');
+        }
+
+        else{
+            return view('auth.login');
+        }
+
     }
 
     /**
