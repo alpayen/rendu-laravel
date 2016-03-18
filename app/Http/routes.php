@@ -60,6 +60,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::resource('/', 'AdminController');
         Route::resource('/articles', 'AdminArticleController');
         Route::resource('/bap', 'BapAdminController');
+        Route::resource('/contact', 'ContactAdminController');
+
     });
 
 

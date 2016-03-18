@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Http\Requests\ContactFormRequest;
-
-class AboutController extends Controller
+class ContactAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +16,9 @@ class AboutController extends Controller
      */
     public function index()
     {
-        // va dans Views/about/contact
+        $contacts = Contact::all();
 
-
+        return view('about.index')->with(compact('contacts'));
     }
 
     /**
@@ -31,7 +29,6 @@ class AboutController extends Controller
     public function create()
     {
         //
-        return view('about.contact');
     }
 
     /**
@@ -40,20 +37,9 @@ class AboutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ContactFormRequest $request)
+    public function store(Request $request)
     {
-
-        $contact = new Contact;
-
-        $contact->name  = $request->name;
-        $contact->email    = $request->email;
-        $contact->message  = $request->message;
-
-        $contact->save();
-
-        return redirect(url('/'));
-
-
+        //
 
     }
 
