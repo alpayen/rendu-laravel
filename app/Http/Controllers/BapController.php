@@ -19,6 +19,9 @@ class BapController extends Controller
     public function index()
     {
 
+
+        //Only if Log In
+
         if(Auth::check()){
 
         return view('bap.index');
@@ -48,7 +51,56 @@ class BapController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        //Validations
+
+
+        $this->validate($request, [
+            'nom' => 'required',
+            'email' => 'required|email',
+            'tel' => 'required|digits_between:6,15',
+            'nomduprojet' => 'required|string',
+            'fonction' => 'required|string',
+            'adresse' => 'required',
+            'nom_suivi' => 'required',
+            'email_suivi' => 'required|email',
+            'tel_suivi' => 'required|digits_between:6,15',
+            'fonction_suivi' => 'required|string',
+            'adresse_suivi' => 'required',
+            'contexte' => 'required',
+            'demande' => 'required',
+            'objectif' => 'required',
+            'contrainte' => 'required'
+        ],
+            [
+                'name.required' => 'Nom obligatoire',
+                'email.required' => 'L\'email est obligatoire!',
+                'email.email' => 'l\'email donné n\'est pas valide',
+                'tel.required' => 'Telephone obligatoire!',
+                'tel.digits_between:6,15' => 'Le numéro de tel doit faire entre 6 et 15 chiffre!',
+                'nomduprojet.required' => 'Votre projet doit avoir un nom',
+                'fonction.required' => 'Vous devez spécifier votre fonction',
+                'adresse.required' => 'Votre adresse est obligatoire!',
+                'nom_suivi.required' => 'Vous devez spécifier votre nom de suivi',
+                'email_suivi.required' => 'L\'email de suivi est obligatoire!',
+                'email_suivi.email' => 'l\'email de suivi donné n\'est pas valide',
+                'tel_suivi.required' => 'Telephone de suivi obligatoire!',
+                'tel_suivi.digits_between:6,15' => 'Le numéro de tel suivi doit faire entre 6 et 15 chiffre!',
+                'fonction_suivi.required' => 'Vous devez spécifier votre fonction suivie',
+                'adresse_suivi.required' => 'Votre adresse suivie est obligatoire!',
+                'contexte.required' => 'Votre contexte est obligatoire!',
+                'demande.required' => 'Votre demande est obligatoire!',
+                'objectif.required' => 'Votre objectif est obligatoire!',
+                'contrainte.required' => 'Votre contrainte est obligatoire!'
+
+
+            ]);
+
+
+        //BDD insertion
+
+
         $projet = new Projet;
         $projet->user_id = Auth::user()->id;
         $projet->nom  = $request->nom;

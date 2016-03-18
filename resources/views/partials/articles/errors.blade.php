@@ -1,7 +1,12 @@
 @if($errors)
-    <ul>
+
+
         @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
+            <div class="col-md-6">
+                <li style="list-style-type: none; color: red;"> Erreur : {{$error}} </li>
+            </div>
         @endforeach
-    </ul>
+
+
+
 @endif

@@ -1,7 +1,26 @@
 @extends('layouts.app', ['pageTitle' => 'Soummission de projet BAP'])
 
+
+
+
 @section('content')
+
+    <div>
+
+        @include('partials.articles.errors')
+
+    </div>
+
+    <h1 style="color: #ffffff;">l</h1>
+
+
+
+
+
+
+
     <h2>Formulaire Bap</h2>
+
     {!! Form::open(array(
     'action' => 'BapController@store',
     'method' => 'POST'))

@@ -52,6 +52,8 @@ class AboutController extends Controller
 
         return redirect() -> route('contact.index');
 
+
+
     }
 
     /**

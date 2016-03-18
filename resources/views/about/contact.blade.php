@@ -26,6 +26,7 @@
 
         {!! Form::open(array('route' => 'contact.store', 'method' => 'POST', 'class' => 'form')) !!}
 
+
         <div class="form-group">
             {!! Form::label('Your Name') !!}
             {!! Form::text('name', null,
