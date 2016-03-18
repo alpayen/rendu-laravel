@@ -59,6 +59,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::resource('/', 'AdminController');
         Route::resource('/articles', 'AdminArticleController');
+        Route::resource('/bap', 'BapAdminController');
     });
 
 
