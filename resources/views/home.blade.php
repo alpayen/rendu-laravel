@@ -7,7 +7,7 @@
     @endif
 
     <div class="row text-center">
-        <h3 class="text-center">Bienvenue Alexandre.T</h3>
+        <h3 class="text-center">Bienvenue</h3>
 
         <div class="col-md-12 text-center" style="margin-bottom: 50px;">Tu pourras naviguer sur la plupart de nos créations via cette page.</div>
 
@@ -15,10 +15,18 @@
             (Section Contact)
         </div>
         <div class="col-md-4">Pour voir les articles, clique <strong><a
-                        href="{{route('articles.index')}}">ici</a></strong> (Articles)
+                        href="{{route('articles.index')}}">ici</a></strong> (Blog)
         </div>
         <div class="col-md-4">Pour accéder aux projets BAP, clique <strong><a href="{{route('bap.index')}}">ici</a></strong>
-            (Formulare pour soumettre un projet)
+            (Formulaire pour soumettre un projet)
+        </div>
+
+        <div class="col-md-4" style="margin-top: 25px;">Pour aller sur votre page profil clique en haut à droite ou clique <strong><a href="{{route('profile.index')}}">ici</a></strong>
+            (Profile)
+        </div>
+
+        <div class="col-md-4" style="margin-top: 25px;">Pour Créer un article, clique <strong><a href="{{route('articles.create')}}">ici</a></strong>
+            (Créer un article)
         </div>
 
 
