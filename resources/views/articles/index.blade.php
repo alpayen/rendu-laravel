@@ -9,6 +9,10 @@
         <h1>{{Session::get('erreur')}}</h1>
     @endif
 
+    <button class="col-md-4 col-md-offset-4" style="margin-top: 25px;"><strong><a href="{{route('articles.create')}}">Créer un article</a></strong></button>
+
+    </br></br></br></br>
+
 
 
     @foreach($posts as $post)
