@@ -53,6 +53,12 @@ class BapAdminController extends Controller
     public function show($id)
     {
         //
+        try{
+            $projet = Projet::findOrFail($id);
+            return view('admin.bap.show')->with(compact('projet'));
+        }catch(\Exception $e) {
+            return redirect()->route('admin.articles.index')->with(['erreur' => 'Oooooooppppsssssss !!']);
+        }
     }
 
     /**
@@ -76,6 +82,14 @@ class BapAdminController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $projet = Projet::find($id);
+
+        $projet->validation   = $request->validation;
+
+
+        $projet->update();
+
+        return redirect()->route('admin.bap.index');
     }
 
     /**

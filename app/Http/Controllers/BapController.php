@@ -69,7 +69,7 @@ class BapController extends Controller
         $projet->save();
 
 
-        return view('home')->with('message', 'Votre Project nous a été envoyé, nous reviendrons à vous dans quelques instants pour vous faire par de sa validation');
+        return redirect('home.index')->with('message', 'Votre Project nous a été envoyé, nous reviendrons à vous dans quelques instants pour vous faire par de sa validation');
     }
 
     /**
