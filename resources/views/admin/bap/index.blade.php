@@ -34,6 +34,7 @@
         </div>
         <br>
         <br>
+        <hr>
     @endforeach
 
     <h3>Projets validés</h3>

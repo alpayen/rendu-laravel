@@ -10,7 +10,8 @@
             <h3 class="text-center"><strong>Nom du projet:</strong> {{$projet->nomduprojet}}</h3></br></br></br></br>
 
 
-            <div class="col-md-6 col_content" style="border-right: 1px solid black;padding-right: 10px;text-align: center;">
+            <div class="col-md-6 col_content"
+                 style="border-right: 1px solid black;padding-right: 10px;text-align: center;">
 
                 <p><strong>Nom:</strong> {{$projet->nom}}</p>
 
@@ -36,25 +37,22 @@
 
             </div>
 
-            <div class="col-md-12">
-                <div class="col-md-3">
+
+            <div class="col-md-12" style="text-align: center;">
 
 
-                    <p><strong>Contexte: </strong>{{$projet->contexte}}</p>
-                </div>
-                <div class="col-md-3">
-                    <p><strong>Demande: </strong>{{$projet->demande}}</p>
-                </div>
-                <div class="col-md-3">
+                <p><strong>Contexte: </strong>{{$projet->contexte}}</p>
 
-                    <p><strong>Objectif: </strong>{{$projet->objectif}}</p>
-                </div>
 
-                <div class="col-md-3">
+                <p><strong>Demande: </strong>{{$projet->demande}}</p>
 
-                    <p><strong>Contrainte:</strong> {{$projet->contrainte}}}</p>
 
-                </div>
+                <p><strong>Objectif: </strong>{{$projet->objectif}}</p>
+
+
+                <p><strong>Contrainte:</strong> {{$projet->contrainte}}}</p>
+
+
             </div>
 
 
@@ -75,6 +73,7 @@
             {!! Form::submit('Accepter ce projet', ['class' => 'btn btn-success']) !!}
             {!! Form::close() !!}
         </div>
+
         <div class="col-md-6">
             {!! Form::model($projet, ['route' => ['admin.bap.update',$projet->id],
                                'method' => 'PUT']) !!}
