@@ -22,7 +22,10 @@
     <div class="form-group">
         {!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
     </div>
-
+    {!! Form::label('admin', 'devenir admin') !!}
+    <div class="form-group">
+        {!! Form::checkbox('admin', Null, ['class' => 'form-control']) !!}
+    </div>
 
     {!! Form::submit('Envoyer', ['class' => 'btn btn-block']) !!}
     {!! Form::close() !!}

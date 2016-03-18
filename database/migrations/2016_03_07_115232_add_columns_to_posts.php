@@ -14,7 +14,7 @@ class AddColumnsToPosts extends Migration
     {
         Schema::table('users', function(Blueprint $table) {
             $table->string('tel')->nullable()->after('name');
-            $table->string('admin')->nullable()->after('name');
+            $table->integer('admin')->nullable()->after('name')->default(0);
 
         });
     }
