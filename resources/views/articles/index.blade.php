@@ -8,9 +8,10 @@
     @if(Session::has('erreur'))
         <h1>{{Session::get('erreur')}}</h1>
     @endif
-
+    @if(Auth::check())
     <button class="col-md-4 col-md-offset-4" style="margin-top: 25px;"><strong><a href="{{route('articles.create')}}">Créer un article</a></strong></button>
-
+    @else <strong>You must be <a href="{{url('/login')}}">logged in</a> to post a comment</strong>
+    @endif
     </br></br></br></br>
 
 

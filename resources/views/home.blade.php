@@ -7,7 +7,9 @@
     @endif
 
     <div class="row text-center">
-        <h3 class="text-center">Bienvenue</h3>
+        <h3 class="text-center">Bienvenue @if(Auth::check()) <strong>{{Auth::user()->name}}</strong>@endif
+
+        </h3>
 
         <div class="col-md-12 text-center" style="margin-bottom: 50px;">Tu pourras naviguer sur la plupart de nos créations via cette page.</div>
 

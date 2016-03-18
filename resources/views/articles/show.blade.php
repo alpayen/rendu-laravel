@@ -26,7 +26,7 @@
     @include('partials.articles.errors')
 
     @else
-        <strong>You must be <a href="{{route('login')}}">logged in</a> to post a comment</strong>
+        <strong>You must be <a href="{{url('/login')}}">logged in</a> to post a comment</strong>
 
     @endif
     <hr>
